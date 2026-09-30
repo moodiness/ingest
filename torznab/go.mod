@@ -1,0 +1,5 @@
+module github.com/moodiness/ingest/torznab
+
+go 1.26.8
+
+require golang.org/x/net v0.59.0
