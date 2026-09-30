@@ -68,6 +68,8 @@ make check
 
 PostgreSQL integration checks are opt-in locally. Set `INGEST_TEST_DATABASE_URL` to a **disposable PostgreSQL instance** with permission to create databases. Each test creates a random isolated database and removes only that database. CI runs these checks, including compact observations without new raw payloads, historical archive access, metadata-only updates, publication/cancellation boundaries, restart recovery, vault authentication, JSON revision conflicts, catalogue scope/credential isolation, native-identifier privacy, TLS refusal, immutable snapshots, atomic remote checkpoints, quota handling and durable schedules.
 
+Use fixed UTC clocks with microsecond-aligned instants when asserting persisted schedule deadlines. PostgreSQL timestamps do not preserve Go's nanosecond precision; host wall-clock resolution must not determine whether a scheduling regression passes.
+
 The independently reusable Torznab SDK remains in `torznab/`; its own tests run separately as part of `make check`.
 
 ### Production browser regressions

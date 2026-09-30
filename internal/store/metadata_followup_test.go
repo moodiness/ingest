@@ -345,7 +345,7 @@ func TestScheduledMetadataFollowupContinuesBudgetWithoutChangingSnapshot(t *test
 	provider.Enabled, provider.Schedule = true, source.Provider.Schedule
 	provider.Traversal.MetadataAfterIncremental = true
 	source.Provider = provider
-	start := time.Now().UTC()
+	start := time.Date(2026, 1, 1, 0, 0, 0, 0, time.UTC)
 	if _, err := db.ReconcileSchedules(ctx, []scheduling.Source{source}, start); err != nil {
 		t.Fatal(err)
 	}
